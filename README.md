@@ -7,6 +7,7 @@ This project provides an implementation of the Tiny Encryption Algorithm (TEA) i
 
 	Features
 - Encrypt and decrypt plaintext using TEA:
+  
 def tea_encrypt_block(block, key):
     L, R = block
     K0, K1, K2, K3 = key
@@ -31,6 +32,7 @@ def tea_decrypt_block(block, key):
     return (L, R)
 
 -Encrypt and decrypt plaintext and BMP image files, leaving the first 10 blocks (80 bytes) unencrypted, using TEA in both modes CBC and ECB :
+
 def ecb_mode_encrypt(plaintext, key):
     plaintext = pad_plaintext(plaintext)
     encrypted = bytearray()
@@ -108,6 +110,7 @@ def cbc_mode_decrypt(ciphertext, key, iv):
 
 
 - Simple padding and unpadding of plaintext.
+  
 def pad_plaintext(plaintext):
     padding_len = (8 - len(plaintext) % 8) % 8
     return plaintext + b'\x00' * padding_len
@@ -135,6 +138,7 @@ def unpad_plaintext(padded_plaintext):
 2. Run the Script: run main.py by pressing on the green arrow.
 
 3. Inter Inputs:
+   
 •	Key: Enter 4 32-bit integers in hexadecimal, separated by spaces. 
 Example: “0x01234567 0x89abcdef 0xfedcba98 0x76543210”
 •	IV: Enter an 8-byte initialization vector in hexadecimal. 
@@ -142,8 +146,9 @@ Example: “0123456789abcdef “
 •	Plaintext: Enter the plaintext string you want to encrypt.
  Example: 
 
-4. Outputs:
+5. Outputs:
    - The script will print the original plaintext, encrypted data, and decrypted plaintext for both ECB and CBC modes.
+     
 print("\nOriginal Plaintext:", plaintext.decode())
 print("\nEncrypted Data Using ECB:", encrypted_data)
 print("\nDecrypted Plaintext Using ECB:", decrypted_plaintext)
